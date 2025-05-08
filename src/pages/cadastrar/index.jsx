@@ -16,6 +16,11 @@ export default function Cadastrar(){
 
     async function handleSubmit(event){
         event.preventDefault();
+
+        if(!titulo || !diretor || !ano || !genero || !nota || !sinopse || !banner){
+            toast.error("Preencha todos os campos!")
+            return;
+        }
         
         try { 
             await instance.post("/api/movies", {
@@ -29,13 +34,13 @@ export default function Cadastrar(){
             })
 
             toast.success("Filme cadastrado com sucesso!")
-            setTitulo=("");
-            setDiretor=("");
-            setAno=("");
-            setGenero=("");
-            setNota=("");
-            setSinopse=("");
-            setBanner=("");
+            setTitulo("");
+            setDiretor("");
+            setAno("");
+            setGenero("");
+            setNota("");
+            setSinopse("");
+            setBanner("");
             
         } catch (error) {
            console.error(error) 
